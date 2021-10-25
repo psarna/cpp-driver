@@ -1,0 +1,800 @@
+
+
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title> CassFuture | Scylla Docs
+    </title>
+    <meta name="description" content="Scylla is an Apache Cassandra-compatible NoSQL data store that can handle 1 million transactions per second on a single server." />
+    <link
+      rel="icon"
+      href="../_static/img/favicon.ico"
+      type="image/x-icon"
+    />
+    <link
+      rel="icon"
+      href="../_static/img/favicon-32x32.png"
+      sizes="32x32"
+    />
+    <link
+      rel="icon"
+      href="../_static/img/favicon-228x228.png"
+      sizes="192x192"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="../_static/img/favicon-228x228.png"
+    />
+    <meta
+      name="msapplication-TileImage"
+      href="../_static/img/favicon-228x228.png"
+    />
+    <link rel="canonical" href="https://docs.scylladb.com/" />
+    <link rel="author" href="mailto:info@scylladb.com" />
+  <!-- connect to domain of font files -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- optionally increase loading priority -->
+  <link
+    rel="preload"
+    as="style"
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,400&display=swap"
+  />
+
+  <!-- async CSS -->
+  <link
+    rel="stylesheet"
+    media="print"
+    onload="this.onload=null;this.removeAttribute('media');"
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,400&display=swap"
+  />
+
+  <!-- no-JS fallback -->
+  <noscript>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,400&display=swap"
+    />
+  </noscript>
+  <link
+    rel="stylesheet"
+    href="../_static/css/main.css"
+    type="text/css"
+  />
+  <link
+    rel="stylesheet"
+    href="../_static/pygments.css"
+    type="text/css"
+  /> <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+
+  <script
+    type="text/javascript"
+    id="documentation_options"
+    data-url_root="../"
+    src="../_static/documentation_options.js"
+  ></script>
+  <script
+    type="text/javascript"
+    src="../_static/js/runtime.bundle.js"
+  ></script>
+  <script
+    type="text/javascript"
+    src="../_static/js/main.bundle.js"
+  ></script> <script src="../_static/jquery.js"></script> <script src="../_static/underscore.js"></script> <script src="../_static/doctools.js"></script> <script src="../_static/language_data.js"></script> <script src="../_static/clipboard.min.js"></script> <script src="../_static/copybutton.js"></script>
+
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-T8P2JP");
+    </script>
+    <!-- End Google Tag Manager -->
+    <!-- Marketo -->
+    <script type="text/javascript">
+      (function () {
+        var didInit = false;
+        function initMunchkin() {
+          if (didInit === false) {
+            didInit = true;
+            Munchkin.init("791-QBF-350");
+          }
+        }
+        var s = document.createElement("script");
+        s.type = "text/javascript";
+        s.async = true;
+        s.src = "//munchkin.marketo.net/munchkin.js";
+        s.onreadystatechange = function () {
+          if (this.readyState == "complete" || this.readyState == "loaded") {
+            initMunchkin();
+          }
+        };
+        s.onload = initMunchkin;
+        document.getElementsByTagName("head")[0].appendChild(s);
+      })();
+    </script>
+    <!-- End Marketo -->
+    <!-- Expertrec -->
+    <script>
+      var id = "e2077224-9ccf-11e9-a0c9-0242ac130002";
+      var ci_search = document.createElement("script");
+      ci_search.type = "text/javascript";
+      ci_search.async = true;
+      ci_search.src = "https://cse.expertrec.com/api/js/ci_common.js?id=" + id;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(ci_search, s);
+    </script>
+    <!-- End Expertrec -->
+
+    <!-- Font Awesome -->
+    <script
+      src="https://kit.fontawesome.com/b1870adf6a.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- End Font Awesome -->
+  </head>
+  
+  <body>
+     <header class="header">
+  <div class="header-logo">
+    <a class="header-logo__img" href="https://scylladb.com/">
+      <img
+        src="../_static/img/logo-scylla-docs.svg"
+        alt="Scylla Documentation Logo"
+      />
+    </a>
+    <span class="header-logo__bar"></span>
+    <a class="header-logo__text" href="https://docs.scylladb.com/">
+      Documentation
+    </a>
+  </div>
+  <div class="header-navigation">
+    <ul
+      class="dropdown menu scylla-dropdown scylla-dropdown--header"
+      data-dropdown-menu
+    >
+      <li class="scylla-dropdown__item">
+        <a href="#" class="scylla-dropdown__title"
+          >Server <i class="chevron scylla-icon scylla-icon--triangle-down"></i
+        ></a>
+        <ul class="menu scylla-dropdown__content">
+          <li>
+            <a href="https://docs.scylladb.com/"
+              ><i class="scylla-icon scylla-icon--about-us"></i>Scylla Open
+              Source</a
+            >
+          </li>
+          <li>
+            <a href="https://docs.scylladb.com/"
+              ><i class="scylla-icon scylla-icon--enterprise"></i>Scylla
+              Enterprise</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://scylla.docs.scylladb.com/master/alternator/alternator.html"
+            >
+              <i class="scylla-icon scylla-icon--overview"></i>Scylla
+              Alternator</a
+            >
+          </li>
+        </ul>
+      </li>
+      <li class="scylla-dropdown__item">
+        <a href="#" class="scylla-dropdown__title"
+          >Cloud <i class="chevron scylla-icon scylla-icon--triangle-down"></i
+        ></a>
+        <ul class="menu scylla-dropdown__content">
+          <li>
+            <a href="https://cloud.scylladb.com/">
+              <i class="scylla-icon scylla-icon--cloud"></i>Scylla Cloud</a
+            >
+          </li>
+          <li>
+            <a href="https://docs.scylladb.com/scylla-cloud/">
+              <i class="scylla-icon scylla-icon--cloud-docs"></i>Scylla Cloud
+              Docs</a
+            >
+          </li>
+        </ul>
+      </li>
+      <li class="scylla-dropdown__item">
+        <a href="#" class="scylla-dropdown__title"
+          >Tools <i class="chevron scylla-icon scylla-icon--triangle-down"></i
+        ></a>
+        <ul class="menu scylla-dropdown__content">
+          <li>
+            <a href="https://manager.docs.scylladb.com/">
+              <i class="scylla-icon scylla-icon--manager"></i>Scylla Manager</a
+            >
+          </li>
+          <li>
+            <a href="https://monitoring.docs.scylladb.com/">
+              <i class="scylla-icon scylla-icon--monitoring"></i>Scylla
+              Monitoring Stack</a
+            >
+          </li>
+          <li>
+            <a href="https://operator.docs.scylladb.com/">
+              <i class="scylla-icon scylla-icon--operator"></i>Scylla Operator
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="scylla-dropdown__item">
+        <a href="#" class="scylla-dropdown__title"
+          >Drivers <i class="chevron scylla-icon scylla-icon--triangle-down"></i
+        ></a>
+        <ul class="menu scylla-dropdown__content">
+          <li>
+            <a
+              href="https://docs.scylladb.com/using-scylla/drivers/cql-drivers/"
+            >
+              <i class="scylla-icon scylla-icon--nsql-guides"></i>CQL Drivers
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://docs.scylladb.com/using-scylla/drivers/dynamo-drivers/"
+            >
+              <i class="scylla-icon scylla-icon--overview"></i>DynamoDB Drivers
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <div class="header-button">
+      <a href="https://www.scylladb.com/download/" class="button">Download</a>
+    </div>
+  </div>
+  <div class="header-search-box">
+    <div class="search-box">
+      <ci-search></ci-search>
+    </div>
+  </div>
+  <div class="side-nav-toggle" data-toggle="side-nav">
+  <div class="side-nav-toggle__button">
+    <img src="../_static/img/menu.svg" alt="Menu" />
+  </div>
+</div>
+</header>
+    <section class="layout ">
+      <div class="content large-order-2">
+         
+
+        <div class="pre-content">
+          <div class="pre-content__left"><div class="breadcrumbs">
+  <span class="bread__item"
+    ><a href="../contents.html" class="icon icon-home">Home</a></span
+  >
+  
+  <span class="bread__item"
+    ><a href="">API Documentation</a></span
+  >
+  
+  <span class="bread__item bread__item--last">CassFuture</span>
+</div></div>
+          <div class="pre-content__right"><ul
+  class="dropdown menu scylla-dropdown scylla-dropdown--contribute"
+  data-dropdown-menu
+>
+  <li class="scylla-dropdown__item">
+    <a class="scylla-dropdown__title" href="#">
+      <div class="scylla-dropdown__title--body">
+        <i class="icon fa fa-github" aria-hidden="true"></i>
+        Contribute
+      </div>
+      <i class="chevron scylla-icon scylla-icon--chevron-right"></i>
+    </a>
+    <ul class="menu scylla-dropdown__content">
+      <li>
+        <a
+          href="https://github.com/scylladb/cpp-driver/issues/new?title=Issue in page CassFuture&&body=I%20would%20like%20to%20report%20an%20issue%20in%20page%20https://cpp-driver.docs.scylladb.com/master/api/struct.CassFuture%0A%0A%23%23%23%20Problem%0A%0A%23%23%23%20%20Suggest%20a%20fix"
+          target="_blank"
+          >Report a doc issue
+          <i class="icon fa fa-external-link" aria-hidden="true"></i
+        ></a>
+      </li>
+      
+      <li>
+             
+        <a
+          href="https://github.com/scylladb/cpp-driver/edit/master/docs/source/api/struct.CassFuture.rst"
+          target="_blank"
+          >Edit this page
+          <i class="icon fa fa-external-link" aria-hidden="true"></i
+        ></a>
+      </li>
+      
+      <li>
+        <a href="https://docs.scylladb.com/contribute/" target="_blank"
+          >Learn how to contribute
+          <i class="icon fa fa-external-link" aria-hidden="true"></i
+        ></a>
+      </li>
+    </ul>
+  </li>
+</ul></div>
+        </div>
+         <div class="section" id="cassfuture">
+<h1>CassFuture<a class="headerlink" href="#cassfuture" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="_CPPv410CassFuture">
+<span id="_CPPv310CassFuture"></span><span id="_CPPv210CassFuture"></span><span id="CassFuture"></span><span class="target" id="struct_cass_future"></span><em class="property">struct </em><code class="sig-name descname">CassFuture</code><a class="headerlink" href="#_CPPv410CassFuture" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The future result of an operation.</p>
+<p>It can represent a result if the operation completed successfully or an error if the operation failed. It can be waited on, polled or a callback can be attached. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv416cass_future_freeP10CassFuture">
+<span id="_CPPv316cass_future_freeP10CassFuture"></span><span id="_CPPv216cass_future_freeP10CassFuture"></span><span id="cass_future_free__CassFutureP"></span><span class="target" id="struct_cass_future_1aeafa34919a63ac802659b2d9d44c5c9e"></span>void <code class="sig-name descname">cass_future_free</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv410CassFuture" title="CassFuture">CassFuture</a> *<em>future</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv416cass_future_freeP10CassFuture" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Frees a future instance. A future can be freed anytime. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv424cass_future_set_callbackP10CassFuture18CassFutureCallbackPv">
+<span id="_CPPv324cass_future_set_callbackP10CassFuture18CassFutureCallbackPv"></span><span id="_CPPv224cass_future_set_callbackP10CassFuture18CassFutureCallbackPv"></span><span id="cass_future_set_callback__CassFutureP.CassFutureCallback.voidP"></span><span class="target" id="struct_cass_future_1ab4f753db0aea9eea009ca4ac0f5a87f2"></span>CassError <code class="sig-name descname">cass_future_set_callback</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv410CassFuture" title="CassFuture">CassFuture</a> *<em>future</em>, CassFutureCallback <em>callback</em>, void *<em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv424cass_future_set_callbackP10CassFuture18CassFutureCallbackPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Sets a callback that is called when a future is set</p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>CASS_OK if successful, otherwise an error occurred </p>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">future</span></code>: </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">callback</span></code>: </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code>: </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv417cass_future_readyP10CassFuture">
+<span id="_CPPv317cass_future_readyP10CassFuture"></span><span id="_CPPv217cass_future_readyP10CassFuture"></span><span id="cass_future_ready__CassFutureP"></span><span class="target" id="struct_cass_future_1a99cd3d056e65d466baafbf2205cb4802"></span>cass_bool_t <code class="sig-name descname">cass_future_ready</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv410CassFuture" title="CassFuture">CassFuture</a> *<em>future</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv417cass_future_readyP10CassFuture" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Gets the set status of the future.</p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>true if set </p>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">future</span></code>: </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv416cass_future_waitP10CassFuture">
+<span id="_CPPv316cass_future_waitP10CassFuture"></span><span id="_CPPv216cass_future_waitP10CassFuture"></span><span id="cass_future_wait__CassFutureP"></span><span class="target" id="struct_cass_future_1aebf53ac461e2f0f3d82168db3f569149"></span>void <code class="sig-name descname">cass_future_wait</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv410CassFuture" title="CassFuture">CassFuture</a> *<em>future</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv416cass_future_waitP10CassFuture" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Wait for the future to be set with either a result or error.</p>
+<p><strong>Important:</strong> Do not wait in a future callback. Waiting in a future callback will cause a deadlock.</p>
+<p><dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">future</span></code>: </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv422cass_future_wait_timedP10CassFuture15cass_duration_t">
+<span id="_CPPv322cass_future_wait_timedP10CassFuture15cass_duration_t"></span><span id="_CPPv222cass_future_wait_timedP10CassFuture15cass_duration_t"></span><span id="cass_future_wait_timed__CassFutureP.cass_duration_t"></span><span class="target" id="struct_cass_future_1a57a5509fb8ecde7eefb41092f8ded382"></span>cass_bool_t <code class="sig-name descname">cass_future_wait_timed</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv410CassFuture" title="CassFuture">CassFuture</a> *<em>future</em>, cass_duration_t <em>timeout_us</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv422cass_future_wait_timedP10CassFuture15cass_duration_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Wait for the future to be set or timeout.</p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>false if returned due to timeout </p>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">future</span></code>: </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">timeout_us</span></code>: wait time in microseconds </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv422cass_future_get_resultP10CassFuture">
+<span id="_CPPv322cass_future_get_resultP10CassFuture"></span><span id="_CPPv222cass_future_get_resultP10CassFuture"></span><span id="cass_future_get_result__CassFutureP"></span><span class="target" id="struct_cass_future_1ae22657a16b7417658de7419143298f62"></span><em class="property">const</em> <a class="reference internal" href="struct.CassResult.html#_CPPv410CassResult" title="CassResult">CassResult</a> *<code class="sig-name descname">cass_future_get_result</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv410CassFuture" title="CassFuture">CassFuture</a> *<em>future</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv422cass_future_get_resultP10CassFuture" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Gets the result of a successful future. If the future is not ready this method will wait for the future to be set.</p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p><a class="reference internal" href="struct.CassResult.html#struct_cass_result"><span class="std std-ref">CassResult</span></a> instance if successful, otherwise NULL for error. The return instance must be freed using <a class="reference internal" href="struct.CassResult.html#struct_cass_result_1aa3008dd52379f1261097636c3bea574f"><span class="std std-ref">cass_result_free()</span></a>.</p>
+</dd>
+<dt><strong>See</strong></dt><dd><p><a class="reference internal" href="struct.CassSession.html#struct_cass_session_1a0bbda64254415bb48675c66ce3c56999"><span class="std std-ref">cass_session_execute()</span></a> and <a class="reference internal" href="struct.CassSession.html#struct_cass_session_1a8a0dd4b44b2c95bc2107e4f5ad5fce4a"><span class="std std-ref">cass_session_execute_batch()</span></a> </p>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">future</span></code>: </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv428cass_future_get_error_resultP10CassFuture">
+<span id="_CPPv328cass_future_get_error_resultP10CassFuture"></span><span id="_CPPv228cass_future_get_error_resultP10CassFuture"></span><span id="cass_future_get_error_result__CassFutureP"></span><span class="target" id="struct_cass_future_1a5d358cd4270b5196f3a40a40b1674409"></span><em class="property">const</em> <a class="reference internal" href="struct.CassErrorResult.html#_CPPv415CassErrorResult" title="CassErrorResult">CassErrorResult</a> *<code class="sig-name descname">cass_future_get_error_result</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv410CassFuture" title="CassFuture">CassFuture</a> *<em>future</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv428cass_future_get_error_resultP10CassFuture" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Gets the error result from a future that failed as a result of a server error. If the future is not ready this method will wait for the future to be set.</p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p><a class="reference internal" href="struct.CassErrorResult.html#struct_cass_error_result"><span class="std std-ref">CassErrorResult</span></a> instance if the request failed with a server error, otherwise NULL if the request was successful or the failure was not caused by a server error. The return instance must be freed using <a class="reference internal" href="struct.CassErrorResult.html#struct_cass_error_result_1ac60ec16fd6dc65598817ef338f74b4e4"><span class="std std-ref">cass_error_result_free()</span></a>.</p>
+</dd>
+<dt><strong>See</strong></dt><dd><p><a class="reference internal" href="struct.CassSession.html#struct_cass_session_1a0bbda64254415bb48675c66ce3c56999"><span class="std std-ref">cass_session_execute()</span></a> and <a class="reference internal" href="struct.CassSession.html#struct_cass_session_1a8a0dd4b44b2c95bc2107e4f5ad5fce4a"><span class="std std-ref">cass_session_execute_batch()</span></a> </p>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">future</span></code>: </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv424cass_future_get_preparedP10CassFuture">
+<span id="_CPPv324cass_future_get_preparedP10CassFuture"></span><span id="_CPPv224cass_future_get_preparedP10CassFuture"></span><span id="cass_future_get_prepared__CassFutureP"></span><span class="target" id="struct_cass_future_1a908e2d8d96f6a87d6c00f31fafbe94c8"></span><em class="property">const</em> <a class="reference internal" href="struct.CassPrepared.html#_CPPv412CassPrepared" title="CassPrepared">CassPrepared</a> *<code class="sig-name descname">cass_future_get_prepared</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv410CassFuture" title="CassFuture">CassFuture</a> *<em>future</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv424cass_future_get_preparedP10CassFuture" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Gets the result of a successful future. If the future is not ready this method will wait for the future to be set. The first successful call consumes the future, all subsequent calls will return NULL.</p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p><a class="reference internal" href="struct.CassPrepared.html#struct_cass_prepared"><span class="std std-ref">CassPrepared</span></a> instance if successful, otherwise NULL for error. The return instance must be freed using <a class="reference internal" href="struct.CassPrepared.html#struct_cass_prepared_1a0d928de9310d4de961e83a9f169e2cc8"><span class="std std-ref">cass_prepared_free()</span></a>.</p>
+</dd>
+<dt><strong>See</strong></dt><dd><p><a class="reference internal" href="struct.CassSession.html#struct_cass_session_1aa3626dea425f6aa4fe7a24a1c6a3d605"><span class="std std-ref">cass_session_prepare()</span></a> </p>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">future</span></code>: </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv422cass_future_error_codeP10CassFuture">
+<span id="_CPPv322cass_future_error_codeP10CassFuture"></span><span id="_CPPv222cass_future_error_codeP10CassFuture"></span><span id="cass_future_error_code__CassFutureP"></span><span class="target" id="struct_cass_future_1a94ce2b7a511c09c093e998a6c414ba05"></span>CassError <code class="sig-name descname">cass_future_error_code</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv410CassFuture" title="CassFuture">CassFuture</a> *<em>future</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv422cass_future_error_codeP10CassFuture" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Gets the error code from future. If the future is not ready this method will wait for the future to be set.</p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>CASS_OK if successful, otherwise an error occurred.</p>
+</dd>
+<dt><strong>See</strong></dt><dd><p>cass_error_desc() </p>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">future</span></code>: </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv425cass_future_error_messageP10CassFuturePPKcP6size_t">
+<span id="_CPPv325cass_future_error_messageP10CassFuturePPKcP6size_t"></span><span id="_CPPv225cass_future_error_messageP10CassFuturePPKcP6size_t"></span><span id="cass_future_error_message__CassFutureP.cCPP.sP"></span><span class="target" id="struct_cass_future_1aa4e6be1e8edf8d968eb0a188f406d9fc"></span>void <code class="sig-name descname">cass_future_error_message</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv410CassFuture" title="CassFuture">CassFuture</a> *<em>future</em>, <em class="property">const</em> char **<em>message</em>, size_t *<em>message_length</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv425cass_future_error_messageP10CassFuturePPKcP6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Gets the error message from future. If the future is not ready this method will wait for the future to be set.</p>
+<p><dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">future</span></code>: </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">message</span></code>: Empty string returned if successful, otherwise a message describing the error is returned. </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">message_length</span></code>: </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv422cass_future_tracing_idP10CassFutureP8CassUuid">
+<span id="_CPPv322cass_future_tracing_idP10CassFutureP8CassUuid"></span><span id="_CPPv222cass_future_tracing_idP10CassFutureP8CassUuid"></span><span id="cass_future_tracing_id__CassFutureP.CassUuidP"></span><span class="target" id="struct_cass_future_1ab12c9cd8b209372e2ec629b7e52adad2"></span>CassError <code class="sig-name descname">cass_future_tracing_id</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv410CassFuture" title="CassFuture">CassFuture</a> *<em>future</em>, <a class="reference internal" href="struct.CassUuid.html#_CPPv48CassUuid" title="CassUuid">CassUuid</a> *<em>tracing_id</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv422cass_future_tracing_idP10CassFutureP8CassUuid" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Gets the tracing ID associated with the request.</p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>CASS_OK if successful, otherwise an error occurred. </p>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">future</span></code>: </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tracing_id</span></code>: </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv437cass_future_custom_payload_item_countP10CassFuture">
+<span id="_CPPv337cass_future_custom_payload_item_countP10CassFuture"></span><span id="_CPPv237cass_future_custom_payload_item_countP10CassFuture"></span><span id="cass_future_custom_payload_item_count__CassFutureP"></span><span class="target" id="struct_cass_future_1a6da1f4040a2ea185e1f92c24e59024cb"></span>size_t <code class="sig-name descname">cass_future_custom_payload_item_count</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv410CassFuture" title="CassFuture">CassFuture</a> *<em>future</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv437cass_future_custom_payload_item_countP10CassFuture" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Gets a the number of custom payload items from a response future. If the future is not ready this method will wait for the future to be set.</p>
+<p><strong>Requires Apache Cassandra:</strong> 2.2+</p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>the number of custom payload items. </p>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">future</span></code>: </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv431cass_future_custom_payload_itemP10CassFuture6size_tPPKcP6size_tPPK11cass_byte_tP6size_t">
+<span id="_CPPv331cass_future_custom_payload_itemP10CassFuture6size_tPPKcP6size_tPPK11cass_byte_tP6size_t"></span><span id="_CPPv231cass_future_custom_payload_itemP10CassFuture6size_tPPKcP6size_tPPK11cass_byte_tP6size_t"></span><span id="cass_future_custom_payload_item__CassFutureP.s.cCPP.sP.cass_byte_tCPP.sP"></span><span class="target" id="struct_cass_future_1ad4ca0ee7fc8c2a0a2e3228340790fec8"></span>CassError <code class="sig-name descname">cass_future_custom_payload_item</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv410CassFuture" title="CassFuture">CassFuture</a> *<em>future</em>, size_t <em>index</em>, <em class="property">const</em> char **<em>name</em>, size_t *<em>name_length</em>, <em class="property">const</em> cass_byte_t **<em>value</em>, size_t *<em>value_size</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv431cass_future_custom_payload_itemP10CassFuture6size_tPPKcP6size_tPPK11cass_byte_tP6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Gets a custom payload item from a response future at the specified index. If the future is not ready this method will wait for the future to be set.</p>
+<p><strong>Requires Apache Cassandra:</strong> 2.2+</p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>CASS_OK if successful, otherwise an error occurred. </p>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">future</span></code>: </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">index</span></code>: </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code>: </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">name_length</span></code>: </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">value</span></code>: </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">value_size</span></code>: </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv423cass_future_coordinatorP10CassFuture">
+<span id="_CPPv323cass_future_coordinatorP10CassFuture"></span><span id="_CPPv223cass_future_coordinatorP10CassFuture"></span><span id="cass_future_coordinator__CassFutureP"></span><span class="target" id="struct_cass_future_1a7e027344b796ffcd13e9da3b2ffa3885"></span><em class="property">const</em> <a class="reference internal" href="struct.CassNode.html#_CPPv48CassNode" title="CassNode">CassNode</a> *<code class="sig-name descname">cass_future_coordinator</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv410CassFuture" title="CassFuture">CassFuture</a> *<em>future</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv423cass_future_coordinatorP10CassFuture" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Gets the node that acted as coordinator for this query. If the future is not ready this method will wait for the future to be set.</p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>The coordinator node that handled the query. The lifetime of this object is the same as the result object it came from. NULL can be returned if the future is not a response future or if an error occurs before a coordinator responds.</p>
+</dd>
+<dt><strong>See</strong></dt><dd><p><a class="reference internal" href="struct.CassStatement.html#struct_cass_statement_1a57fae038622371e2e2bbe8dfa16b6542"><span class="std std-ref">cass_statement_set_node()</span></a> </p>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">future</span></code>: </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+  <div class="content-navigation">
+  <div class="navigation navigation--prev">
+    <a class="navigation__link" href="struct.CassFunctionMeta.html">
+      <button class="navigation__button">
+        <i class="scylla-icon scylla-icon--chevron-left"></i>
+      </button>
+      <div class="navigation__title">
+        <span class="colored">PREVIOUS</span> <br />CassFunctionMeta
+      </div>
+    </a>
+  </div>
+  <div class="navigation navigation--next">
+    <a class="navigation__link" href="struct.CassIndexMeta.html">
+      <div class="navigation__title">
+        <span class="colored">NEXT</span> <br />CassIndexMeta
+      </div>
+      <button class="navigation__button">
+        <i class="scylla-icon scylla-icon--chevron-right"></i>
+      </button>
+    </a>
+  </div>
+</div> 
+      </div>
+      <div
+        class="sidebar-left  large-order-1"
+      > <div id="side-nav" class="side-nav" data-closable data-toggler=".show">
+  <div class="side-nav__search">
+    <div class="search-box">
+      <ci-search></ci-search>
+    </div>
+  </div>
+  <div class="side-nav__versions">
+     <ul
+  class="dropdown menu scylla-dropdown scylla-dropdown--versions scylla-dropdown--single-version"
+  data-dropdown-menu
+>
+  <li class="scylla-dropdown__item">
+    <a class="scylla-dropdown__title" href="#">
+       master 
+      <i class="chevron scylla-icon scylla-icon--chevron-right"></i>
+    </a>
+    <ul class="menu scylla-dropdown__content"> 
+      <li>
+        <a href="struct.CassFuture.html"
+          >master</a
+        >
+      </li>
+      
+    </ul>
+  </li>
+</ul> 
+  </div>
+  <div class="side-nav__content">
+    <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">C/C++ Driver for ScyllaDB</a></li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">API Documentation</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label for="toctree-checkbox-1"><i class="scylla-icon scylla-icon--expand"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="struct.CassAggregateMeta.html">CassAggregateMeta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="struct.CassAuthenticator.html">CassAuthenticator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="struct.CassBatch.html">CassBatch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="struct.CassCluster.html">CassCluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="struct.CassCollection.html">CassCollection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="struct.CassColumnMeta.html">CassColumnMeta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="struct.CassCustomPayload.html">CassCustomPayload</a></li>
+<li class="toctree-l2"><a class="reference internal" href="struct.CassDataType.html">CassDataType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="struct.CassErrorResult.html">CassErrorResult</a></li>
+<li class="toctree-l2"><a class="reference internal" href="struct.CassExecProfile.html">CassExecProfile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="struct.CassFunctionMeta.html">CassFunctionMeta</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">CassFuture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="struct.CassIndexMeta.html">CassIndexMeta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="struct.CassInet.html">CassInet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="struct.CassIterator.html">CassIterator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="struct.CassKeyspaceMeta.html">CassKeyspaceMeta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="struct.CassMaterializedViewMeta.html">CassMaterializedViewMeta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="struct.CassMetrics.html">CassMetrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="struct.CassNode.html">CassNode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="struct.CassPrepared.html">CassPrepared</a></li>
+<li class="toctree-l2"><a class="reference internal" href="struct.CassResult.html">CassResult</a></li>
+<li class="toctree-l2"><a class="reference internal" href="struct.CassRetryPolicy.html">CassRetryPolicy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="struct.CassRow.html">CassRow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="struct.CassSchemaMeta.html">CassSchemaMeta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="struct.CassSession.html">CassSession</a></li>
+<li class="toctree-l2"><a class="reference internal" href="struct.CassSsl.html">CassSsl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="struct.CassStatement.html">CassStatement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="struct.CassTableMeta.html">CassTableMeta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="struct.CassTimestampGen.html">CassTimestampGen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="struct.CassTuple.html">CassTuple</a></li>
+<li class="toctree-l2"><a class="reference internal" href="struct.CassUserType.html">CassUserType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="struct.CassUuid.html">CassUuid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="struct.CassUuidGen.html">CassUuidGen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="struct.CassValue.html">CassValue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="struct.CassVersion.html">CassVersion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="struct.DseDateRange.html">DseDateRange</a></li>
+<li class="toctree-l2"><a class="reference internal" href="struct.DseDateRangeBound.html">DseDateRangeBound</a></li>
+<li class="toctree-l2"><a class="reference internal" href="struct.DseLineString.html">DseLineString</a></li>
+<li class="toctree-l2"><a class="reference internal" href="struct.DseLineStringIterator.html">DseLineStringIterator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="struct.DsePolygon.html">DsePolygon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="struct.DsePolygonIterator.html">DsePolygonIterator</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../topics/index.html">Features</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label for="toctree-checkbox-2"><i class="scylla-icon scylla-icon--expand"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../topics/basics/index.html">Basics</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label for="toctree-checkbox-3"><i class="scylla-icon scylla-icon--expand"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../topics/basics/batches/index.html">Batches</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../topics/basics/binding_parameters/index.html">Binding Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../topics/basics/client_side_timestamps/index.html">Client-side timestamps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../topics/basics/consistency/index.html">Consistency</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../topics/basics/data_types/index.html">Data Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../topics/basics/date_and_time/index.html">The <code class="docutils literal notranslate"><span class="pre">date</span></code> and <code class="docutils literal notranslate"><span class="pre">time</span></code> Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../topics/basics/futures/index.html">Futures</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../topics/basics/handling_results/index.html">Handling Results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../topics/basics/keyspaces/index.html">Keyspaces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../topics/basics/prepared_statements/index.html">Prepared Statements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../topics/basics/schema_metadata/index.html">Schema Metadata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../topics/basics/tuples/index.html">Tuples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../topics/basics/user_defined_types/index.html">User-Defined Types (UDTs)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../topics/basics/uuids/index.html">UUIDs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../topics/building/index.html">Building</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../topics/client_configuration/index.html">Client Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../topics/cloud/index.html">Cloud</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../topics/configuration/index.html">Configuration</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label for="toctree-checkbox-4"><i class="scylla-icon scylla-icon--expand"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../topics/configuration/retry_policies/index.html">Retry policies</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../topics/execution_profiles/index.html">Execution Profiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../topics/faq/index.html">FAQ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../topics/installation/index.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../topics/logging/index.html">Logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../topics/metrics/index.html">Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../topics/scylla_specific/index.html">Scylla Specific Features</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../topics/security/index.html">Security</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label for="toctree-checkbox-5"><i class="scylla-icon scylla-icon--expand"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../topics/security/ssl/index.html">SSL</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../topics/testing/index.html">Testing</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label for="toctree-checkbox-6"><i class="scylla-icon scylla-icon--expand"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../topics/testing/ccm/index.html">Cassandra Cluster Manager (CCM)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../topics/tracing/index.html">Tracing</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../topics/dse_features/index.html">DSE Features</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label for="toctree-checkbox-7"><i class="scylla-icon scylla-icon--expand"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../topics/dse_features/authentication/index.html">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../topics/dse_features/geotypes/index.html">Geospatial types</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+</div>
+      </div>
+      
+      <div class="sidebar-right large-order-3">
+        
+      </div>
+    </section>
+
+    <footer class="footer">
+  <div class="footer-group">
+    <div class="footer-top">
+      <a class="footer-logo" href="https://www.scylladb.com"
+        ><img
+          src="../_static/img/logo-scylla-horizontal-RGB.svg"
+          alt="Logo"
+      /></a>
+      <div class="footer-links">
+        <a class="footer-links__link" href="https://docs.scylladb.com/">Docs</a>
+        <a
+          class="footer-links__link"
+          href="https://www.scylladb.com/company/contact-us/"
+          >Contact Us</a
+        >
+        <a class="footer-links__link" href="https://www.scylladb.com/company/"
+          >About Us</a
+        >
+      </div>
+      <div class="footer-actions">
+        <a
+          class="footer-actions__link"
+          href="https://groups.google.com/g/scylladb-users"
+          target="_blank"
+          ><span
+            data-tooltip
+            tabindex="1"
+            title="User mailing list"
+            data-position="bottom"
+          >
+            <img
+              src="../_static/img/icons/icon-mail-list.svg"
+              alt="Mail List Icon"
+            />
+          </span>
+        </a>
+        <a
+          class="footer-actions__link"
+          href="http://slack.scylladb.com/"
+          target="_blank"
+          ><span
+            data-tooltip
+            tabindex="1"
+            title="User Slack channel"
+            data-position="bottom"
+          >
+            <img
+              src="../_static/img/icons/icon-slack.svg"
+              alt="Slack Icon"
+          /></span>
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-bottom__copyright"> &#169; 2021, ScyllaDB. All rights reserved.
+      </div>
+      <div class="footer-bottom__last-updated">
+        Last updated on 25 October 2021.
+      </div>
+      <div class="footer-bottom__version">
+        Powered by
+        <a href="http://sphinx-doc.org/">Sphinx 2.4.4</a> &amp;
+        <a href="https://sphinx-theme.scylladb.com/"
+          >ScyllaDB Theme 1.0.4</a
+        >
+      </div>
+    </div>
+  </div>
+</footer>
+
+    <noscript>
+      <iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-T8P2JP"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe>
+    </noscript>
+  </body>
+</html>
